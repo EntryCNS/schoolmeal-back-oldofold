@@ -1,32 +1,10 @@
-buildscript {
-    ext {
-        kotlinVersion = '1.6.10'
-        springBootVersion = '2.6.4'
-    }
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
-        classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
-        classpath("org.jetbrains.kotlin:kotlin-noarg:${kotlinVersion}")
-    }
-}
-
 plugins {
     id 'org.springframework.boot' version '2.6.4'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
+    id 'application'
+    id 'org.jetbrains.kotlin.jvm' version '1.6.10'
 }
-
-
-apply plugin: 'java'
-apply plugin: 'kotlin'
-apply plugin: 'kotlin-spring'
-apply plugin: 'eclipse'
-apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management'
 
 group = 'kr.hs.dgsw.cns'
 version = '0.0.1-SNAPSHOT'
@@ -40,6 +18,10 @@ configurations {
 
 repositories {
     mavenCentral()
+}
+
+application {
+    mainClassName = 'SchoolmealBackNgApplication'
 }
 
 compileKotlin {
