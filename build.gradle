@@ -1,9 +1,9 @@
 plugins {
     id 'org.springframework.boot' version '2.6.4'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-    id 'java'
-    id 'application'
     id 'org.jetbrains.kotlin.jvm' version '1.6.10'
+    id 'org.jetbrains.kotlin.plugin.spring' version '1.6.10'
+    id 'org.jetbrains.kotlin.plugin.jpa' version '1.6.10'
 }
 
 group = 'kr.hs.dgsw.cns'
@@ -20,10 +20,6 @@ repositories {
     mavenCentral()
 }
 
-application {
-    mainClassName = 'SchoolmealBackNgApplication'
-}
-
 compileKotlin {
     kotlinOptions {
         freeCompilerArgs = ["-Xjsr305=strict"]
@@ -36,6 +32,12 @@ compileTestKotlin {
         freeCompilerArgs = ["-Xjsr305=strict"]
         jvmTarget = "11"
     }
+}
+
+allOpen {
+    annotation("javax.persistence.Entity")
+    annotation("javax.persistence.MappedSuperclass")
+    annotation("javax.persistence.Embeddable")
 }
 
 dependencies {
